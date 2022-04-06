@@ -13,6 +13,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build -t avi828:latest .
+      - uses: actions/checkout@v2
+      - name: Set up QEMU
+        id: qemu
+        uses: docker/setup-qemu-action@v1
+
+      - name: Setup buildx
+        uses: docker/setup-Buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: avinashyadavpuresoftware
+          password: Avinash@8794
+      - name: Build and Publish API
+        uses: docker/build-push-action@v2
+        with:
+         context: .
+         file: ./Dockerfile
+         platforms: linux/arm64, linux/amd64
+         push: true
+         tags: avinashyadavpuresoftware/imaggg7:latest
