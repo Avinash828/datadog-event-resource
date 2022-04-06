@@ -28,8 +28,8 @@ jobs:
       - name: Build and Publish API
         uses: docker/build-push-action@v2
         with:
-         context: .dockerfiles/alpine
-         file: .dockerfiles/alpine/Dockerfile
+         context: ./dockerfiles/alpine
+         file: ./dockerfiles/alpine/Dockerfile
          platforms: linux/arm64, linux/amd64
          push: true
          tags: avinashyadavpuresoftware/imaggg7:latest
